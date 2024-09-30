@@ -1,0 +1,342 @@
+<resources>
+    <string name="app_name">CoffeHub</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="gui">guiBtn</string>
+    <string name="default_web_client_id">837032553365-1hpvf8nr4jp3568vr4rfn42l8fmqcj33.apps.googleusercontent.com</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+    <!-- login_or_signup -->
+    <string name="dang_ky">Đăng ký</string>
+    <string name="dang_nhap">Đăng nhập</string>
+    <string name="google_btn">Đăng nhập bằng google</string>
+
+    <!-- login -->
+    <string name="login_text_dang_nhap">Đăng Nhập</string>
+    <string name="login_text_chao_mung">Chào mừng bạn !</string>
+    <string name="login_text_dang_nhap_tiep_tuc">Đăng Nhập để tiếp tục nha</string>
+    <string name="login_hint_email">Nhập email hoặc tên đăng nhập</string>
+    <string name="login_text_mat_khau">Mật khẩu</string>
+    <string name="login_hint_password">Nhập mật khẩu</string>
+    <string name="login_text_quen_mat_khau">Quên mật khẩu ?</string>
+    <string name="login_text_dang_nhap_button">Đăng Nhập</string>
+    <string name="login_text_ban_da_co_tai_khoan">Bạn chưa có tài khoản? </string>
+    <string name="login_text_dang_ky"> Đăng ký</string>
+    <string name="login_email_hoạc_name">Email hoặc tên đăng nhập</string>
+
+    <!-- sign up -->
+    <string name="signup_text_dang_ky">Đăng Ký</string>
+    <string name="signup_text_chao_mung">Chào mừng bạn !</string>
+    <string name="signup_text_dang_ky_tiep_tuc">Đăng ký để tiếp tục nha</string>
+    <string name="signup_hint_ten_dang_nhap">Nhập tên đăng nhập</string>
+    <string name="signup_text_email">Email</string>
+    <string name="signup_hint_email">Nhập email</string>
+    <string name="signup_text_mat_khau">Mật khẩu</string>
+    <string name="signup_hint_mat_khau">Nhập mật khẩu</string>
+    <string name="signup_text_dang_ky_button">Đăng Ký</string>
+    <string name="signup_text_ban_da_co_tai_khoan">Bạn đã có tài khoản? </string>
+    <string name="signup_text_dang_nhap">Đăng nhập</string>
+    <string name="signup_ten_dang_nhap">Tên đăng nhập</string>
+    <string name="signup_text_phone">Số Điện Thoại</string>
+    <string name="signup_hint_phone">Nhập số điện thoại</string>
+
+    <!-- forgot password -->
+
+    <string name="forgot_new_password">Mật khẩu mới</string>
+    <string name="forgot_enter_password">Mật khẩu</string>
+    <string name="forgot_enter_new_password">Nhập mật khẩu mới</string>
+    <string name="forgot_confirm_password">Xác nhận mật khẩu</string>
+    <string name="forgot_retype_password">Nhập lại mật khẩu</string>
+    <string name="forgot_send">Gửi</string>
+
+
+    <!-- activity_input_email -->
+    <string name="input_email_QuenMK">Quên Mật Khẩu</string>
+    <string name="input_email">Nhập email hoặc SĐT</string>
+    <string name="input_email_sendotp">Gửi OTP</string>
+
+    <!-- Order List -->
+    <string name="order_list_quanl_donhang">Quản Lý Đơn Hàng</string>
+
+    <!-- otpSend -->
+    <string name="otpsend_xac_minh">Xác Minh</string>
+    <string name="otpsend_Nhap_ma">Nhập mã xác nhận</string>
+    <string name="otpsend_k_nhan_dk_ma">Không nhận được mã</string>
+    <string name="otpsend_gui_lai">Gửi lại</string>
+    <string name="otpsend_xac_nhan">Xác nhận</string>
+
+    <!-- dialog_custom -->
+    <string name="dialog_cus_comple_register">Đăng ký thành công ! </string>
+
+    <!-- dialog_forgot_password -->
+    <string name="dialog_fogot_pass_true">Đổi mật khẩu thành công</string>
+
+
+    <!-- dialog_otp -->
+    <string name="dialog_otp">Hãy nhập mã OTP</string>
+    <string name="dialig_otp_xac_thuc">Xác thực</string>
+
+    <!-- menu_admin_botton -->
+    <string name="menu_admin_botton_home">Trang chủ</string>
+    <string name="menu_admin_botton_addP_prodct">Thêm mới</string>
+    <string name="menu_admin_botton_setting">Cài đặt</string>
+
+    <!-- menu_categoty -->
+    <string name="menu_categori_delete">Xoá</string>
+    <string name="nenu_category_detail">Chi tiết</string>
+
+    <!--menu1 -->
+    <string name="menu1_home">Trang chủ</string>
+    <string name="menu1_history">Đơn hàng</string>
+    <string name="menu1_cart">Giỏ hàng</string>
+    <string name="menu1_profile">Profile</string>
+
+    <!-- menu_drawer -->
+    <string name="menu_drawer_change_pas">Đổi mật khẩu</string>
+    <string name="menu_drawer_change_language">Ngôn ngữ</string>
+    <string name="menu_drawer_privecy_policy">Chính sách bảo mật</string>
+    <string name="menu_drawer_notification">Cài đặt thông báo</string>
+    <string name="menu_drawer_logout">Đăng xuất</string>
+    <string name="dark_mode">Chế độ tối</string>
+    <string name="light_mode">Chế độ sáng</string>
+
+
+    <!-- menu_drawer_admin -->
+    <string name="menu_drawer_admin_orderlist">Danh sách đơn hàng</string>
+    <string name="menu_drawer_admin_orderlist_user">Đơn hàng theo người dùng</string>
+
+    <!-- fragmentHistory -->
+    <string name="frag_history_hoan_thanh">Hoàn Thành</string>
+    <string name="frag_history_dang_cho">Đang Chờ</string>
+    <string name="order_custom_item_tiltle">Đơn hàng đã hoàn thành</string>
+    <string name="order_not_custom_item">Đơn hàng chưa hoàn thành</string>
+
+    <string name="day">Ngày : </string>
+    <string name="time">"Thời gian :  "</string>
+    <string name="sum">Tổng : </string>
+    <string name="frag_TK_month">Tháng</string>
+    <string name="frag_TK_label">Thống Kê</string>
+    <string name="frag_TK_DH_label">Thống Kê Đơn Hàng</string>
+    <string name="frag_TK_DT_label">Thống Kê Doanh Thu</string>
+    <string name="frag_TK_SP_label">Thống Kê Sản Phẩm</string>
+    <string name="frag_TK_DH_TabItem">Đơn Hàng</string>
+    <string name="frag_TK_DT_TabItem">Doanh Thu</string>
+    <string name="frag_TK_SP_TabItem">Sản Phẩm</string>
+    <string name="frag_TK_week">Tuần</string>
+
+    <string name="Edit"><![CDATA[<u>Edit</u>.]]></string>
+    <string name="don_hang_da_dat">Đơn hàng đã đặt</string>
+
+
+    <!-- fragmentHistory -->
+    <string name="dialog_chose_type">Xác Thực Tài Khoản</string>
+    <string name="dialog_chose_type_authen">Kiểu Xác Thực</string>
+    <string name="dialog_chose_Phone">Số Điện Thoại</string>
+
+
+    <!-- string cua nhat -->
+    <string name="account">Account</string>
+    <string name="cart">cart</string>
+    <string name="order">Order</string>
+    <string name="name">name</string>
+    <string name="price">price</string>
+    <string name="searchItem">Tìm kiếm sản phẩm</string>
+    <string name="home">Trang chủ</string>
+    <string name="trangcanhan">Trang cá nhân</string>
+
+
+    <string name="gioHang">Giỏ hàng của bạn</string>
+    <string name="diaDiemGiaoHang">Địa chỉ nhận hàng</string>
+    <string name="manthien">97 Man Thiện</string>
+    <string name="phone">Số điện thoại</string>
+    <string name="phone1">0966666666</string>
+    <string name="tomtat">Tóm tắt thanh toán</string>
+    <string name="giatien">Giá tiền</string>
+    <string name="phigiaohang">Phí ship</string>
+    <string name="tongThanhToan">Tổng</string>
+    <string name="tienMat">Thanh toán khi nhận hàng</string>
+    <string name="datHangNgay">Đặt đơn</string>
+    <string name="phiGiaoHang">20,000đ</string>
+    <string name="giatxtprice">"Giá : "</string>
+    <string name="del_product_cart">Xóa sản phẩm khỏi giỏ hàng</string>
+    <string name="confirm_del_product_cart">Bạn có chắc chắn muốn xóa sản phẩm khỏi giỏ hàng?</string>
+    <string name="co">Có</string>
+    <string name="no">Không</string>
+    <string name="color_selected_size">#94a3b8</string>
+    <string name="qr_saved">QR Code đã được lưu trước đó</string>
+    <string name="qr_save">QR Code đã được lưu</string>
+    <string name="scan_qr">Quét mã QR</string>
+    <string name="name_host">Người nhận : Nguyễn Tiến Nhật</string>
+    <string name="price_bank">Số tiền :</string>
+    <string name="note_bank">"Mô tả : "</string>
+    <string name="cantfind">Không tìm thấy giao dịch, hãy kiểm tra kĩ và thử lại !</string>
+    <string name="time_con_lai">"Thời gian còn lại: "</string>
+    <string name="nhap_dia_chi">Vui lòng nhập địa chỉ</string>
+    <string name="nhap_phone">Vui lòng nhập số điện thoại</string>
+    <string name="phone_fail">Số điện thoại không hợp lệ</string>
+    <string name="payment_method">Chọn phương thức thanh toán</string>
+    <string name="thanh_toan_thanh_cong">Thanh toán thành công</string>
+    <string name="don_hang_dang_xu_ly">Đơn hàng của bạn đang được xử lý.</string>
+    <string name="thong_tin">Thông tin</string>
+    <string name="thanh_cong">Thành công</string>
+    <string name="them_sp_thanh_cong">Thêm sản phẩm vào giỏ hàng thành công!</string>
+    <string name="che_do_toi">Chế độ tối</string>
+    <string name="tim_kiem_ca_phe">Tìm kiếm cà phê</string>
+    <string name="don_hang">Đơn hàng</string>
+    <string name="chon_size">Chọn size</string>
+    <string name="so_luong">Số lượng</string>
+    <string name="_1">1</string>
+    <string name="them_gio_hang">Thêm vào giỏ hàng</string>
+    <string name="tro_ve">Trở về</string>
+    <string name="luu_qr">Lưu QR</string>
+    <string name="da_thanh_toan">Đã thanh toán</string>
+    <string name="empty_cart">Giỏ hàng rỗng</string>
+    <string name="thay_doi">Thay đổi</string>
+    <string name="cach_thanh_toan">Phương thức thanh toán</string>
+    <string name="chi_tiet_don_hang">Chi tiết đơn hàng</string>
+    <string name="don_hang_cua_ban">Đơn hàng của bạn</string>
+    <string name="chon_size_khi_them_vao_cart">Chọn Size trước khi thêm vào giỏ hàng</string>
+    <string name="them_vao_cart_thanh_cong">Đã thêm sản phẩm vào giỏ hàng</string>
+
+    <string name="goodmorning">Chào buổi sáng</string>
+    <string name="goodluch">Chào buổi trưa</string>
+    <string name="goodafternoon">Chào buổi chiều</string>
+    <string name="goodnight">Chào buổi tối</string>
+
+    <!-- change Passwrod  -->
+    <string name="change_paswrod">Thay đổi Mật Khẩu</string>
+    <string name="change_paswrod_old_passwrod">Nhập lại mật khẩu</string>
+    <string name="change_paswrod_old_pass_hint">Mật khẩu cũ</string>
+    <string name="change_paswrod_new_passwrod">Nhập mật khẩu mới</string>
+    <string name="change_paswrod_new_pass_hint">Mật khẩu mới</string>
+    <string name="change_paswrod_confirm_passwrod">Nhập lại mật khẩu</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
+    <string name="khong_the_lay_dia_chi">Không thể lấy địa chỉ</string>
+    <string name="xem">Xem</string>
+    <string name="thanh_toan_zalopay">Thanh toán ZaloPay</string>
+    <string name="create_order_success">Đơn hàng của bạn đã được tạo</string>
+    <string name="thanh_toan_bi_huy">Thanh toán bị hủy</string>
+    <string name="tt_fail">Thanh toán thất bại</string>
+    <string name="thanh_toan_khi_nhan_hang">Thanh toán khi nhận hàng</string>
+    <string name="nhap_lai_pass">Vui lòng nhập lại password</string>
+    <string name="nhap_pass_new">Hãy nhập mật khẩu mới</string>
+    <string name="pls_write_pass">Hãy nhập lại mật khẩu</string>
+    <string name="pass_incorrect">Nhập lại mật khẩu không chính xác</string>
+    <string name="pass_not_correct">Password không chính xác!</string>
+    <string name="chua_nhap_pass">Chưa nhập mật khẩu</string>
+    <string name="chua_dong_bo">Chưa đồng bộ</string>
+    <string name="sdt_li_n_k_t_google">SDT đã liên kết Google</string>
+    <string name="s_t_ch_a_c_ng_k">SĐT chưa được đăng ký</string>
+    <string name="b_n_ch_a_nh_p_th_ng_tin">Bạn chưa nhập thông tin</string>
+    <string name="email_not_null">Email not null</string>
+    <string name="password_not_null">Password not null</string>
+    <string name="checked_usser_successfull">checked usser successfull</string>
+    <string name="t_n_ng_nh_p_kh_ng_t_n_t_i">Tên đăng nhập không tồn tại!</string>
+    <string name="login_with_username_connect_database_faile">Login with username, connect database faile!</string>
+    <string name="email_n_y_c_ng_k">"Email này đã được đăng ký "</string>
+    <string name="kh_ng_th_truy_c_p_th_ng_tin_email_c_a_t_i_kho_n_google_n_y">Không thể truy cập thông tin email của tài khoản Google này.</string>
+    <string name="l_i_khi_truy_xu_t_d_li_u_t_firebase">Lỗi khi truy xuất dữ liệu từ Firebase</string>
+    <string name="b_n_c_mu_n_c_p_nh_t_theme_kh_ng">Bạn có muốn cập nhật theme không?</string>
+    <string name="c_p_nh_t_theme">Cập nhật Theme</string>
+    <string name="yes">Có</string>
+    <string name="b_n_ch_a_nh_p_m_otp">Bạn chưa nhập mã OTP</string>
+    <string name="otp_kh_ng_ch_nh_x_c">OTP không chính xác</string>
+    <string name="otp_h_t_h_n_h_y_t_o_t_i_otp">OTP đã hết hạn,hãy tạo tại OTP!</string>
+    <string name="t_n_ng_nh_p_t_n_t_i">Tên đăng nhập đã tồn tại</string>
+    <string name="email_c_ng_k">Email đã được đăng ký</string>
+    <string name="email_t_n_ng_nh_p_c_ng_k"><![CDATA[Email & tên đăng nhập đã được đăng ký]]></string>
+    <string name="b_n_ch_a_nh_p_t_n_ng_nh_p">Bạn chưa nhập tên đăng nhập</string>
+    <string name="b_n_ch_a_nh_p_email">Bạn chưa nhập Email</string>
+    <string name="b_n_ch_a_nh_p_s_i_n_tho_i">Bạn chưa nhập Số Điện Thoại</string>
+    <string name="password_not_null_1">Password not null</string>
+    <string name="kh_ng_ng_nh_dang_mail">Không đúng định dang Mail</string>
+    <string name="s_t_c_ng_k">SĐT đã được đăng ký</string>
+    <string name="h_y_nh_p_y_otp">Hãy nhập đầy đủ OTP</string>
+    <string name="otp_ch_a_ch_nh_x_c">OTP chưa chính xác</string>
+    <string name="signup_false_email_n_y_c_ng_k">signUp false,Email này đã được đăng ký</string>
+    <string name="checkusername_connect_to_firebase_false">"checkUsername connect to firebase false : "</string>
+    <string name="ng_y_b_t_u_kh_ng_th_sau_ng_y_k_t_th_c">Ngày bắt đầu không thể sau ngày kết thúc</string>
+    <string name="ng_y_k_t_th_c_kh_ng_th_tr_c_ng_y_b_t_u">Ngày kết thúc không thể trước ngày bắt đầu</string>
+    <string name="kh_ng_c_n_h_ng_n_o_trong_kho_ng_th_i_gian_n_y">Không có đơn hàng nào trong khoảng thời gian này!</string>
+    <string name="xu_t_file_pdf_th_nh_c_ng">Xuất file PDF thành công!</string>
+    <string name="ch_x_c_nh_n">Chờ xác nhận</string>
+    <string name="ang_giao_h_ng">Đang giao hàng</string>
+    <string name="giao">Đã giao</string>
+    <string name="h_y">Đã hủy</string>
+    <string name="th_m_th_nh_c_ng">Thêm thành công</string>
+    <string name="s_n_ph_m_c_th_m_v_o_gi_h_ng_c_a_b_n">Sản phẩm đã được thêm vào giỏ hàng của bạn</string>
+    <string name="please_enter_a_category">Please enter a category</string>
+    <string name="failed_to_add_category">Failed to add category</string>
+    <string name="category_added_successfully">Category added successfully</string>
+    <string name="failed_to_edit_category">Failed to edit category</string>
+    <string name="category_edited_successfully">Category edited successfully</string>
+    <string name="category_not_found">Category not found</string>
+    <string name="failed_to_delete_category">Failed to delete category</string>
+    <string name="category_deleted_successfully">Category deleted successfully</string>
+    <string name="t_i_l_n_th_nh_c_ng">Tải lên thành công</string>
+    <string name="t_i_l_n_th_t_b_i">Tải lên thất bại</string>
+    <string name="permission_denied_to_read_your_external_storage">Permission denied to read your External storage</string>
+    <string name="danh_s_ch_h_a_n">Danh sách hóa đơn</string>
+    <string name="id">ID: #%1$s</string>
+    <string name="ph_ng_th_c_thanh_to_n">Phương thức thanh toán :%1$s</string>
+    <string name="th_i_gian">Thời gian: %1$s</string>
+    <string name="shipper_s_t">Shipper: %1$s\nSĐT: %2$s</string>
+    <string name="t_ng">Tổng: %1$s</string>
+    <string name="s_t_ng_i_nh_n">SĐT người nhận: %1$s</string>
+    <string name="a_ch">Địa chỉ: %1$s</string>
+    <string name="t_n">Tên: %1$s</string>
+    <string name="s_i_n_tho_i">Số điện thoại: %1$s</string>
+    <string name="email">Email: %1$s</string>
+    <string name="th_m_l_i_t_t_c_s_n_ph_m_v_o_gi_h_ng">Đã thêm lại tất cả sản phẩm vào giỏ hàng</string>
+    <string name="s_a_s_n_ph_m_th_nh_c_ng">Sửa sản phẩm thành công</string>
+    <string name="ch_giao_h_ng">Chờ giao hàng</string>
+    <string name="vui_l_ng_ch_n_ng_y_b_t_u_v_ng_y_k_t_th_c">Vui lòng chọn ngày bắt đầu và ngày kết thúc</string>
+    <string name="kh_ng_c_d_li_u_hi_n_th">Không có dữ liệu để hiển thị</string>
+    <string name="doanh_thu">Doanh Thu</string>
+    <string name="n_h_ng">Đơn hàng</string>
+
+
+</resources>

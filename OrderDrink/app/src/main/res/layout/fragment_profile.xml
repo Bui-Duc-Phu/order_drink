@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mainLayout"
+    android:orientation="vertical"
+    tools:context=".Fragments.ProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/layout1"
+        android:orientation="vertical"
+        android:background="@drawable/back_proflie2"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+              android:layout_gravity="center"
+            android:text="UserName"
+            android:textColor="#FF000000"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/saveBtn"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_rectangle"
+            android:text="Lưu ảnh"
+            android:textColor="#FFFFFF"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/custom_back_edit"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/back_item_pro"
+            android:padding="10dp">
+            <ImageView
+                android:id="@+id/icon_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:padding="10dp"
+                android:src="@drawable/ursername" />
+            <EditText
+                android:id="@+id/nameEdt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColorHint="@android:color/transparent"
+                android:textColorHighlight="@android:color/transparent"
+                android:text="Họ và tên"
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/edtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:src="@drawable/editing" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/back_item_pro"
+            android:padding="10dp">
+            <ImageView
+                android:id="@+id/icon_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:padding="10dp"
+                android:src="@drawable/phone" />
+            <EditText
+                android:id="@+id/phoneEdt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColorHint="@android:color/transparent"
+                android:textColorHighlight="@android:color/transparent"
+                android:text="0947945596"
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/editPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:src="@drawable/editing" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back_item_pro"
+            android:orientation="horizontal"
+
+            android:padding="10dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:padding="10dp"
+                android:src="@drawable/mail" />
+            <TextView
+                android:id="@+id/emailTv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"
+                android:text="phuhk9@gmail.com"
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back_item_pro"
+            android:orientation="horizontal"
+            android:padding="10dp">
+            <ImageView
+                android:id="@+id/icon_loacation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:padding="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/address" />
+
+            <EditText
+                android:id="@+id/locationEdt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="97 Man Thiện/Quân 9/hcm"
+                android:textColor="#000000"
+                android:textColorHighlight="@android:color/transparent"
+                android:textColorHint="@android:color/transparent"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/editLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:src="@drawable/editing" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back_item_pro"
+            android:padding="10dp">
+            <ImageView
+                android:id="@+id/icon_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:padding="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/calendar" />
+
+            <EditText
+                android:id="@+id/dateEdt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="48dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:gravity="center"
+                android:text="05/01/2002"
+                android:textColor="#000000"
+                android:textColorHighlight="@android:color/transparent"
+                android:textColorHint="@android:color/transparent"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/editdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:src="@drawable/editing" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/save"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/rounded_rectangle"
+        android:text="Lưu"
+        android:textColor="#FFFFFF"
+        android:textSize="16dp" />
+
+
+</LinearLayout>
