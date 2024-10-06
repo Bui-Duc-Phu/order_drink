@@ -1,11 +1,17 @@
 const { Sequelize } = require('sequelize');
 
-
-const sequelize = new Sequelize('appCoffe', 'postgres', 'phuhk123', {
+const sequelize = new Sequelize('order-drink', 'root', 'phuhk123', {
   host: 'localhost',
-  dialect: 'postgres',
-  port:'5432'
+  dialect: 'mysql',
+  port: '3333',
+  pool: {
+    max: 10,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  }
 });
+
 
 sequelize.authenticate()
   .then(() => {

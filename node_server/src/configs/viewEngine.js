@@ -1,15 +1,11 @@
 
-const express = require('express')
 var morgan = require('morgan')
 
 
 
-const conFigViewEngiine = (app , ) => {  
+const conFigViewEngine = (app) => {
     require('dotenv').config()
     app.use(morgan('combined'))
-
-
-
 }
 
-module.exports = conFigViewEngiine
+module.exports = conFigViewEngine

@@ -16,12 +16,12 @@ const { signInFacebook } = require('../controllers/auth/signInFacebook')
 
 
 const {
-    checkData
+    SignupError
 } = require('../middleware/signUpMiddleware')
 
 
 
-authRouter.post('/create-user', checkData, createUser);
+authRouter.post('/create-user', createUser, SignupError);
 authRouter.post('/login', loginController)
 authRouter.post('/verification', verification)
 authRouter.patch('/reset', resetPasswrod)

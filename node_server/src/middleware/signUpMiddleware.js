@@ -1,12 +1,11 @@
 
 
-const checkData = (req,res,next) =>{
-    const {email,phoneNumber,fullName,password} = req.body;
-
-    if (typeof phoneNumber === 'undefined') {
-        req.body.phoneNumber = '';
-    }
-    next()
+const SignupError = (err, req, res, next) => {
+    console.error("Error occurred 123:", err);
+    res.status(500).json({
+        message: err.message || 'Internal server error',
+        result: null
+    });
 }
 
-module.exports = {checkData}
+module.exports = { SignupError }

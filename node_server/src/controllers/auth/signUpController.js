@@ -1,4 +1,4 @@
-const sequelize = require('../../configs/db');
+const sequelize = require('../../configs/db').default;
 const { createToken } = require('../../jwt/createToken');
 const User = require('../../models/User')
 const bcrypt = require('bcrypt');
@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 
 
 
-const createUser = async (req, res) => {
+const createUser = async (req, res, next) => {
   try {
     const { email, phoneNumber, fullName, password, typePassword } = req.body;
 
@@ -37,30 +37,8 @@ const createUser = async (req, res) => {
 
 
   } catch (error) {
-    if (error.name === 'SequelizeValidationError') {
-      const validationErrors = error.errors.map(err => err.message);
-      res.status(400).json({
-        message: 'Validation errors',
-        data: {
-          SQL_Error: validationErrors
-        }
+    next(error)
 
-      });
-    } else if (error.name === 'SequelizeUniqueConstraintError') {
-      res.status(400).json({
-        message: 'Email already exists',
-        data: {
-          SQL_Error: error.errors.map(err => err.message)
-        }
-
-
-      });
-    } else {
-      res.status(500).json({
-        message: 'Internal server error',
-        error: error.message
-      });
-    }
   }
 
 }
