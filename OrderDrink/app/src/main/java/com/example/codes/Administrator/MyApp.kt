@@ -28,7 +28,6 @@ class MyApp : Application() {
 
         if (modeList.isEmpty()) {
             createValue()
-
         } else {
             mode = modeList[0]
             lang = modeList[1]
@@ -47,7 +46,6 @@ class MyApp : Application() {
         val data: DBHelper = DBHelper(this, null)
         data.addName("1", "light")
         data.addName("2", "vi")
-
     }
 
 

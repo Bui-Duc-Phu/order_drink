@@ -8,7 +8,7 @@ const sequelize = new Sequelize('order-drink', 'root', 'phuhk123', {
     max: 10,
     min: 0,
     acquire: 30000,
-    idle: 10000
+    idle: 10000 
   }
 });
 

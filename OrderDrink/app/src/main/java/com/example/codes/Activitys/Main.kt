@@ -78,12 +78,14 @@ class Main : AppCompatActivity(){
 
 
 
+
+
+
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
     private fun init_() {
         navigationDrawer()
-
         setSupportActionBar(binding.toolbar)
         setupViewPagerAndBottomNav()
         setUpBadge()

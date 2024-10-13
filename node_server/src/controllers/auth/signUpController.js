@@ -2,6 +2,7 @@ const sequelize = require('../../configs/db').default;
 const { createToken } = require('../../jwt/createToken');
 const User = require('../../models/User')
 const bcrypt = require('bcrypt');
+const {StatusCodes} = require('http-status-codes')
 
 
 
@@ -9,24 +10,28 @@ const bcrypt = require('bcrypt');
 
 const createUser = async (req, res, next) => {
   try {
-    const { email, phoneNumber, fullName, password, typePassword } = req.body;
+    const { email, phoneNumber, userName, password, typePassword } = req.body;
 
+    if (password.length < 6) {
+      throw new Error('Password must be at least 6 characters long');
+    }
+    
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
 
     const newUser = await User.create({
       email,
       phoneNumber,
-      fullName,
+      userName,
       password: hashedPassword,
-      typePassword
+      typePassword 
     });
 
     const plainUser = newUser.get({ plain: true });
 
     res.status(201).json({
       message: 'User created successfully',
-      userData: {
+      result: {
         id: plainUser.id,
         email: plainUser.email,
         phoneNumber: plainUser.phoneNumber,
@@ -37,8 +42,8 @@ const createUser = async (req, res, next) => {
 
 
   } catch (error) {
-    next(error)
 
+    next(error)
   }
 
 }

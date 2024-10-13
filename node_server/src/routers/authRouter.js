@@ -15,13 +15,9 @@ const { signInGoogle } = require('../controllers/auth/signInGoogle')
 const { signInFacebook } = require('../controllers/auth/signInFacebook')
 
 
-const {
-    SignupError
-} = require('../middleware/signUpMiddleware')
 
 
-
-authRouter.post('/create-user', createUser, SignupError);
+authRouter.post('/create-user',createUser);
 authRouter.post('/login', loginController)
 authRouter.post('/verification', verification)
 authRouter.patch('/reset', resetPasswrod)

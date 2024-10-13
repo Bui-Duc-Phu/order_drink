@@ -1,43 +1,50 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../configs/db');
 
-const User = sequelize.define('User', {
+const Product = sequelize.define('Product', {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
-  email: {
+  category: {
     type: DataTypes.STRING,
-    allowNull: true,
-    unique: true,
+    allowNull: false,
   },
-  phoneNumber: {
-    type: DataTypes.STRING,
-    allowNull: true,
+  quantity: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
     validate: {
-      isNumeric: true, 
+      min: 0,
     },
   },
-  userName: {
-    type: DataTypes.STRING,
-    allowNull: true,
-    unique: true,
-
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: true,
-  },
-  typePassword: {
-    type: DataTypes.ENUM('admin', 'user', 'shipper'),
-    allowNull: true,
-    defaultValue: 'user'
-  },
-  typeAccount: {
-    type: DataTypes.ENUM('email', 'google', 'facebook'),
+  price: {
+    type: DataTypes.FLOAT,
     allowNull: false,
-    defaultValue: 'email'
+    validate: {
+      min: 0.0,
+    },
+  },
+  finalPrice: {
+    type: DataTypes.FLOAT,
+    allowNull: false,
+    validate: {
+      min: 0.0,
+    },
+  },
+  image: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  size: {
+    type: DataTypes.ENUM('S', 'M', 'L', 'XL'),  
+    allowNull: false,
+    defaultValue: 'S',  
   },
   createdAt: {
     type: DataTypes.DATE,
@@ -53,4 +60,4 @@ const User = sequelize.define('User', {
   timestamps: true,
 });
 
-module.exports = User;
+module.exports = Product;
