@@ -27,6 +27,7 @@ import com.example.codes.Firebase.FirebaseUpdate
 import com.example.codes.Fragments.CartFragment
 import com.example.codes.Fragments.HistoryFragment
 import com.example.codes.Fragments.HomeFragment
+import com.example.codes.Fragments.Homefragment2
 import com.example.codes.Fragments.ProfileFragment
 
 import com.example.codes.Models.ModeTheme
@@ -65,7 +66,7 @@ class Main : AppCompatActivity(){
         DataHandler.getInforPDF {
             DataHandler.userInfo=it
         }
-        devices()
+
         init_()
 
 
@@ -117,7 +118,7 @@ class Main : AppCompatActivity(){
         binding.viewPager2!!.setAdapter(AdapterViewPager(this, fragmentArrayList))
         binding.viewPager2!!.setUserInputEnabled(false)
         binding.bottomNavigationView!!.setOnItemSelectedListener { item: MenuItem ->
-            if (item.itemId == R.id.homeFragment) {
+            if (item.itemId == R.id.homefragment) {
                 binding.viewPager2!!.setCurrentItem(0, true)
             }
             if (item.itemId == R.id.cartFragment) {
@@ -235,13 +236,11 @@ class Main : AppCompatActivity(){
     @RequiresApi(Build.VERSION_CODES.S)
     fun toggleNightMode() {
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-
         val newNightMode = when (currentNightMode) {
             Configuration.UI_MODE_NIGHT_NO -> AppCompatDelegate.MODE_NIGHT_YES
             Configuration.UI_MODE_NIGHT_YES -> AppCompatDelegate.MODE_NIGHT_NO
             else -> return
         }
-
         val confirmationDialog = AlertDialog.Builder(this)
             .setTitle(getString(R.string.c_p_nh_t_theme))
             .setMessage(getString(R.string.b_n_c_mu_n_c_p_nh_t_theme_kh_ng))
@@ -258,10 +257,8 @@ class Main : AppCompatActivity(){
                 it.dismiss()
             }
             .create()
-
         confirmationDialog.show()
     }
-
     private fun updateDataMode(){
         val dbHelper = DBHelper(this,null)
         if(dbHelper.getModeList()[0] == ModeTheme.dark.toString()){
@@ -270,14 +267,10 @@ class Main : AppCompatActivity(){
             dbHelper.updateMode("1", ModeTheme.dark.toString())
         }
     }
-
     fun isDarkMode(): Boolean {
         val currentMode = this.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         return currentMode == Configuration.UI_MODE_NIGHT_YES
     }
-
-
-
 
     fun changeLang(context: Context, lang: String) {
         val myLocale = Locale(lang)
@@ -285,13 +278,10 @@ class Main : AppCompatActivity(){
         val configuration = Configuration(context.resources.configuration)
         configuration.setLocale(myLocale)
         context.resources.updateConfiguration(configuration, context.resources.displayMetrics)
-
-
         val dbHelper = DBHelper(this,null)
         if( lang == "vi") dbHelper.updateMode("2", "vi")
         else dbHelper.updateMode("2", "en")
     }
-
     fun isVietnameseLanguage(context: Context): Boolean {
         val currentLocale = context.resources.configuration.locale
         return currentLocale == Locale("vi")
@@ -299,25 +289,7 @@ class Main : AppCompatActivity(){
 
 
 
-   private fun  devices(){
-       val firebaseUser : FirebaseUser = FirebaseAuth.getInstance().currentUser!!
-        FirebaseFunction.evenLogOut(applicationContext, firebaseUser.uid){
-            if(!it){
-                val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .requestIdToken(getString(R.string.default_web_client_id))
-                    .requestEmail()
-                    .build()
-                googleSignInClient = GoogleSignIn.getClient(this, gso)
-                googleSignInClient.revokeAccess().addOnCompleteListener(this) {}
-                googleSignInClient.signOut().addOnCompleteListener(this){}
-                auth.signOut()
-                FirebaseUpdate.deleteDriver(firebaseUser.uid.toString()){
-                    if(!it) Toast.makeText(applicationContext, "delete driver failse", Toast.LENGTH_SHORT).show()
-                }
-                startActivity(Intent(this, LoginOrSignUp::class.java))
-            }
-        }
-   }
+
 
 
 

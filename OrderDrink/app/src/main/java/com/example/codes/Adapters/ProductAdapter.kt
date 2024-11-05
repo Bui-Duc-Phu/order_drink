@@ -25,9 +25,8 @@ class ProductAdapter(private var productList: List<ProductModel>) :
         var productPrice: TextView
         var productImage: ImageView
         var productDiscountPrice: TextView
-
         init {
-            productName = itemView.findViewById(R.id.textProductName)
+            productName = itemView .findViewById(R.id.textProductName)
             productPrice = itemView.findViewById(R.id.textProductPrice)
             productImage = itemView.findViewById(R.id.imageProduct)
             productDiscountPrice = itemView.findViewById(R.id.textProductDiscountPrice)

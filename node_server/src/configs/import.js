@@ -10,6 +10,7 @@ const config = {
   conFigViewEngine: require("./viewEngine"),
   express: require("express"),
   sequelize: require('./db'),
+  create_default_data : require('./dataset/default_data'),
 };
 
 module.exports = config;

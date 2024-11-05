@@ -11,50 +11,30 @@ const Product = sequelize.define('Product', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  quantity: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    validate: {
-      min: 0,
-    },
-  },
   price: {
     type: DataTypes.FLOAT,
-    allowNull: false,
+    allowNull: true,
     validate: {
       min: 0.0,
     },
   },
-  finalPrice: {
-    type: DataTypes.FLOAT,
-    allowNull: false,
+  discount: {
+    type: DataTypes.FLOAT, 
+    allowNull: true,
+    defaultValue: 0.0,
     validate: {
       min: 0.0,
+      max: 100.0,
     },
-  },
-  image: {
+  },  
+  imageUrl: {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  name: {
+  name:{
     type: DataTypes.STRING,
     allowNull: false,
     unique: true,
-  },
-  size: {
-    type: DataTypes.ENUM('S', 'M', 'L', 'XL'),  
-    allowNull: false,
-    defaultValue: 'S',  
-  },
-  createdAt: {
-    type: DataTypes.DATE,
-    allowNull: false,
-    defaultValue: DataTypes.NOW,
-  },
-  updatedAt: {
-    type: DataTypes.DATE,
-    allowNull: false,
-    defaultValue: DataTypes.NOW,
   },
 }, {
   timestamps: true,

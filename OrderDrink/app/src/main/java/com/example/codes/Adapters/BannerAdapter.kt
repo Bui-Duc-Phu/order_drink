@@ -18,7 +18,10 @@ class BannerAdapter(private val bannerImages: List<String>) :
     }
 
     override fun onBindViewHolder(holder: BannerViewHolder, position: Int) {
-        Glide.with(holder.itemView.context).load(bannerImages[position])
+        println("adapter uurrl "+ bannerImages[position])
+
+        Glide.with(holder.itemView.context)
+            .load(bannerImages[position])
             .into(holder.imageViewBanner)
     }
 

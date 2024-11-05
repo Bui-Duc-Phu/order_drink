@@ -1,9 +1,8 @@
-const { sendMail } = require('../../configs/SendMail');
-const sequelize = require('../../configs/db');
+
 const { createToken } = require('../../jwt/createToken');
-const User = require('../../models/User')
 const bcrypt = require('bcrypt');
-const LoginResponse = require('../../dto/responeResult/LoginRespone')
+const LoginResponse = require('../../dto/responeResult/LoginRespone');
+const { User } = require('../../models/User');
 
 const loginController = async (req,res,next) => {
   try {

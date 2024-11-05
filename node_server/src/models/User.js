@@ -23,31 +23,20 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: true,
     unique: true,
-
   },
   password: {
     type: DataTypes.STRING,
     allowNull: true,
-  },
-  typePassword: {
-    type: DataTypes.ENUM('admin', 'user', 'shipper'),
-    allowNull: true,
-    defaultValue: 'user'
   },
   typeAccount: {
     type: DataTypes.ENUM('email', 'google', 'facebook'),
     allowNull: false,
     defaultValue: 'email'
   },
-  createdAt: {
-    type: DataTypes.DATE,
+  role: {
+    type: DataTypes.ENUM('user', 'admin', 'moderator'), 
     allowNull: false,
-    defaultValue: DataTypes.NOW,
-  },
-  updatedAt: {
-    type: DataTypes.DATE,
-    allowNull: false,
-    defaultValue: DataTypes.NOW,
+    defaultValue: 'user', 
   },
 }, {
   timestamps: true,

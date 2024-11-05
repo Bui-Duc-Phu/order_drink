@@ -8,4 +8,8 @@ class CategoryModel {
     constructor(name: String?) {
         this.name = name
     }
+
+    override fun toString(): String {
+        return name ?: "null"
+    }
 }

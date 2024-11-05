@@ -15,8 +15,6 @@ const { signInGoogle } = require('../controllers/auth/signInGoogle')
 const { signInFacebook } = require('../controllers/auth/signInFacebook')
 
 
-
-
 authRouter.post('/create-user',createUser);
 authRouter.post('/login', loginController)
 authRouter.post('/verification', verification)
@@ -25,4 +23,4 @@ authRouter.post('/google-signIn', signInGoogle)
 authRouter.post('/facebook-signIn', signInFacebook)
 
 
-module.exports = { authRouter }
+module.exports =  authRouter 

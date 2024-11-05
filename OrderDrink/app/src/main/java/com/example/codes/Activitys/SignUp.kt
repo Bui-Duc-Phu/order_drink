@@ -1,64 +1,24 @@
 package com.example.codes.Activitys
 
-import android.app.Activity
-import android.app.Dialog
+
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.CountDownTimer
-import android.os.Handler
-import android.text.TextUtils
 import android.util.Patterns
-import android.view.WindowManager
-import android.widget.RadioButton
-import android.widget.TextView
 import android.widget.Toast
-
-import com.example.codes.Firebase.FirebaseFunction
-import com.example.codes.Firebase.FirebaseUpdate
-import com.example.codes.Firebase.OTP_Athen_Phone
-
-import com.example.codes.Models.Users
-import com.example.codes.R
 import com.example.codes.databinding.ActivitySignUpBinding
-import com.example.codes.databinding.DialogChoseTypeAuthenBinding
-import com.example.codes.databinding.DialogCustomBinding
-import com.example.codes.databinding.DialogCustomOtpBinding
-
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import java.util.Properties
-import javax.mail.Authenticator
-import javax.mail.Message
-import javax.mail.MessagingException
-import javax.mail.PasswordAuthentication
-import javax.mail.Session
-import javax.mail.Transport
-import javax.mail.internet.InternetAddress
-import javax.mail.internet.MimeMessage
-import kotlin.random.Random
+import com.example.codes.network.dto.request.SignupRequest
+import com.example.codes.network.service.authService
 
 class SignUp : AppCompatActivity() {
     private val binding: ActivitySignUpBinding by lazy {
         ActivitySignUpBinding.inflate(layoutInflater)
     }
-
-
     private var progressDialog: ProgressDialog? = null
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-
         init_()
     }
 
@@ -66,47 +26,68 @@ class SignUp : AppCompatActivity() {
         binding.apply {
             backBtn.setOnClickListener {
                 onBackPressed()
-
             }
             dangNhapTv.setOnClickListener {
                 startActivity(Intent(this@SignUp, Login::class.java))
             }
-
         }
         checked()
-
-
     }
-
     private fun checked() {
-
         binding.dangKyBtn.setOnClickListener {
             progressDialog = ProgressDialog.show(this@SignUp, "App", "Loading...", true)
-
             val userName = binding.nameEdt.text.toString().trim()
             val Email = binding.emailEdt.text.toString().trim()
             val phone = binding.phoneEdt.text.toString().trim()
             val password = binding.passwordEdt.text.toString().trim()
-
-
-
-
-
-
+            when {
+                userName.isEmpty() -> {
+                    binding.nameEdt.error = "Name cannot be empty"
+                    progressDialog!!.dismiss()
+                    return@setOnClickListener // Return if validation fails
+                }
+                Email.isEmpty() -> {
+                    binding.emailEdt.error = "Email cannot be empty"
+                    progressDialog!!.dismiss()
+                    return@setOnClickListener
+                }
+                !Patterns.EMAIL_ADDRESS.matcher(Email).matches() -> { // Using Patterns for email validation
+                    binding.emailEdt.error = "Invalid email format"
+                    progressDialog!!.dismiss()
+                    return@setOnClickListener
+                }
+                phone.isEmpty() -> {
+                    binding.phoneEdt.error = "Phone number cannot be empty"
+                    progressDialog!!.dismiss()
+                    return@setOnClickListener
+                }
+                phone.length != 10 -> { // Simple phone number validation
+                    binding.phoneEdt.error = "Invalid phone number"
+                    progressDialog!!.dismiss()
+                    return@setOnClickListener
+                }
+                password.isEmpty() -> {
+                    binding.passwordEdt.error = "Password cannot be empty"
+                    progressDialog!!.dismiss()
+                    return@setOnClickListener
+                }
+                password.length <= 6 -> {
+                    binding.passwordEdt.error = "Password must be more than 6 characters"
+                    progressDialog!!.dismiss()
+                    return@setOnClickListener
+                }
+            }
+            progressDialog!!.dismiss()
+            val signupRequest = SignupRequest(userName, Email, phone, password)
+            authService.signUpService(this,signupRequest,{ signupResponse ->
+                if (signupResponse != null) {
+                    startActivity(Intent(this,Main::class.java))
+                    Toast.makeText(this, "create account successful!", Toast.LENGTH_SHORT).show()
+                }
+            },{err->Toast.makeText(this, "err: "+ err, Toast.LENGTH_SHORT).show() })
         }
-
-
     }
 
-
-    private fun createAcount(userName: String, email: String, password: String, phone: String) {
-
-
-    }
-
-
-    private fun checkUserName(userName_: String, email: String, callback: (Int) -> Unit) {
-    }
 
 
 }

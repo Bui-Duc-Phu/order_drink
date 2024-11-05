@@ -2,9 +2,8 @@ package com.example.codes.Models
 
 import java.io.Serializable
 
-class ProductModel : Serializable {
+open class ProductModel : Serializable {
     var name: String? = null
-    var key: String? = null
     var price = 0
     var imageUrl: String? = null
     var discount = 0
@@ -19,6 +18,12 @@ class ProductModel : Serializable {
         this.category = category
     }
 
+
+
     val finalPrice: Double
         get() = price * (1 - discount / 100.0)
+
+    override fun toString(): String {
+        return "ProductModel(name=$name, price=$price, imageUrl=$imageUrl, discount=$discount, category=$category)"
+    }
 }

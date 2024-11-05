@@ -17,6 +17,8 @@ import com.example.codes.Firebase.FirebaseFunction
 import com.example.codes.Models.Users
 import com.example.codes.R
 import com.example.codes.databinding.ActivityLoginBinding
+import com.example.codes.network.dto.request.LoginRequest
+import com.example.codes.network.service.authService
 
 
 import com.google.firebase.auth.FirebaseAuth
@@ -45,8 +47,6 @@ class Login : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         init_()
     }
-
-
     private fun init_() {
         binding.apply {
             backBtn.setOnClickListener {
@@ -61,132 +61,35 @@ class Login : AppCompatActivity() {
             }
         }
     }
-
-
-    // Kiểm tra thông tin đăng nhập
     private fun checked() {
         var email = binding.emailEdt.text.toString().trim()
         var password = binding.passwordEdt.text.toString().trim()
-        when {
-            TextUtils.isEmpty(email) -> Toast.makeText(this,
-                getString(R.string.email_not_null), Toast.LENGTH_SHORT)
-                .show()
-
-            TextUtils.isEmpty(password) -> Toast.makeText(
-                this,
-                getString(R.string.password_not_null),
-                Toast.LENGTH_SHORT
-            ).show()
-
-            else -> {
-                // Kiểm tra email có đúng định dạng không, nếu không thì đăng nhập bằng tên đăng nhập
-                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) loginWithUsername(
-                    email,
-                    password
-                )
-                else loginWithEmail(email, password)
+        when{
+            email.isEmpty()->{
+                binding.emailEdt.error = "email cannot be empty"
+                return
+            }
+            password.isEmpty()->{
+                binding.passwordEdt.error = "password cannot be empty"
+                return
             }
         }
+        authService.loginService(this,
+            LoginRequest(email,password), { onSuccess ->
+                if (onSuccess  != null) {
+                    Toast.makeText(this, "create account successful!", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this,Main::class.java))
+                }
+
+        },{err-> Toast.makeText(this, "err: "+ err, Toast.LENGTH_SHORT).show() })
     }
 
 
-    private fun loginWithUsername(username: String, password: String) {
-        val ref = FirebaseDatabase
-            .getInstance("https://coffe-app-19ec3-default-rtdb.asia-southeast1.firebasedatabase.app/")
-            .getReference("Users")
-        ref.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (!isFinishing) {
-                    progressDialog = ProgressDialog.show(this@Login, "App", "Loading...", true)
-                }
-
-                for (snapshot in snapshot.children) {
-                    val user = snapshot.getValue(Users::class.java)
-                    if (user!!.userName.equals(username)) {
-                        println(getString(R.string.checked_usser_successfull))
-                        loginWithEmail(user.email, password)
-                        progressDialog!!.dismiss()
-                        return
-                    }
-                }
-                progressDialog!!.dismiss()
-                Toast.makeText(
-                    applicationContext,
-                    getString(R.string.t_n_ng_nh_p_kh_ng_t_n_t_i),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(
-                    applicationContext,
-                    getString(R.string.login_with_username_connect_database_faile),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        })
-    }
 
 
-    @SuppressLint("NotConstructor")
-    private fun loginWithEmail(email: String, password: String) {
-
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    auth.signOut()
-                    auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener {
-                            if (it.isSuccessful) {
-                                progressDialog = ProgressDialog.show(this, "App", "Login...", true)
-                                binding.emailEdt.setText("")
-                                binding.passwordEdt.setText("")
-                                progressDialog!!.dismiss()
-                                FirebaseFunction.WriteDeviceId(
-                                    applicationContext,
-                                    auth.currentUser!!.uid
-                                )
-                                checkTypeAccount(email)
-                            }
-                        }
-                }
-            }.addOnFailureListener { e ->
-
-                Toast.makeText(this, "Login failed: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
-    }
 
 
-    private fun checkTypeAccount(email: String) {
-        val ref = FirebaseDatabase
-            .getInstance("https://coffe-app-19ec3-default-rtdb.asia-southeast1.firebasedatabase.app/")
-            .getReference("Users")
-            .orderByChild("email")
-            .equalTo(email)
-        ref.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (snapshot in dataSnapshot.children) {
-                    val user = snapshot.getValue(Users::class.java)
-                    if (user != null) {
-                        if (user.typeAccount == "2") {
-                            DataHandler.setTypeAccount("2")
-                            startActivity(Intent(this@Login, MainAdmin::class.java))
-                            finish()
-                        } else {
-                            DataHandler.setTypeAccount("1")
-                            val intent = Intent(this@Login, Main::class.java)
-                            startActivity(intent)
-                            finish()
-                        }
-                    }
-                }
-            }
 
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Handle possible errors.
-            }
-        })
-    }
 
 
 }

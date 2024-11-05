@@ -1,0 +1,167 @@
+[
+  {
+    "productName": "Cappuccino Freeze",
+    "size": "S",
+    "price": 1000
+  },
+  {
+    "productName": "Cappuccino Freeze",
+    "size": "M",
+    "price": 200
+  },
+  {
+    "productName": "Cappuccino Freeze",
+    "size": "L",
+    "price": 1000
+  },
+  {
+    "productName": "Choco Milktea",
+    "size": "S",
+    "price": 1000
+  },
+  {
+    "productName": "Choco Milktea",
+    "size": "M",
+    "price": 2000
+  },
+  {
+    "productName": "Choco Milktea",
+    "size": "L",
+    "price": 1000
+  },
+  {
+    "productName": "Espresso",
+    "size": "S",
+    "price": 1000
+  },
+  {
+    "productName": "Espresso",
+    "size": "M",
+    "price": 1000
+  },
+  {
+    "productName": "Espresso",
+    "size": "L",
+    "price": 1000
+  },
+  {
+    "productName": "Espresso Freeze",
+    "size": "S",
+    "price": 1000
+  },
+  {
+    "productName": "Espresso Freeze",
+    "size": "M",
+    "price": 1000
+  },
+  {
+    "productName": "Espresso Freeze",
+    "size": "L",
+    "price": 3000
+  },
+  {
+    "productName": "Jasmine Milktea",
+    "size": "S",
+    "price": 1000
+  },
+  {
+    "productName": "Jasmine Milktea",
+    "size": "M",
+    "price": 2000
+  },
+  {
+    "productName": "Jasmine Milktea",
+    "size": "L",
+    "price": 1000
+  },
+  {
+    "productName": "Lemon Juice",
+    "size": "S",
+    "price": 1000
+  },
+  {
+    "productName": "Lemon Juice",
+    "size": "M",
+    "price": 2000
+  },
+  {
+    "productName": "Lemon Juice",
+    "size": "L",
+    "price": 3000
+  },
+  {
+    "productName": "Macchiato",
+    "size": "S",
+    "price": 0
+  },
+  {
+    "productName": "Macchiato",
+    "size": "M",
+    "price": 2000
+  },
+  {
+    "productName": "Macchiato",
+    "size": "L",
+    "price": 1000
+  },
+  {
+    "productName": "Macchiato Freeze",
+    "size": "S",
+    "price": 1000
+  },
+  {
+    "productName": "Macchiato Freeze",
+    "size": "M",
+    "price": 2000
+  },
+  {
+    "productName": "Macchiato Freeze",
+    "size": "L",
+    "price": 1000
+  },
+  {
+    "productName": "Mocha",
+    "size": "S",
+    "price": 0
+  },
+  {
+    "productName": "Mocha",
+    "size": "M",
+    "price": null
+  },
+  {
+    "productName": "Mocha",
+    "size": "L",
+    "price": 3000
+  },
+  {
+    "productName": "Okinawa Milktea",
+    "size": "S",
+    "price": 0
+  },
+  {
+    "productName": "Okinawa Milktea",
+    "size": "M",
+    "price": 2000
+  },
+  {
+    "productName": "Okinawa Milktea",
+    "size": "L",
+    "price": 3000
+  },
+  {
+    "productName": "Orange Juice",
+    "size": "S",
+    "price": 0
+  },
+  {
+    "productName": "Orange Juice",
+    "size": "M",
+    "price": 2000
+  },
+  {
+    "productName": "Orange Juice",
+    "size": "L",
+    "price": 3000
+  }
+]

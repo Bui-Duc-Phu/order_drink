@@ -16,4 +16,10 @@ class SizeModel {
     fun getPrice(): Int {
         return price.toInt()
     }
+
+    override fun toString(): String {
+        return "SizeModel(size='$size', price=$price)"
+    }
+
+
 }

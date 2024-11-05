@@ -1,11 +1,8 @@
 const sequelize = require('../../configs/db').default;
 const { createToken } = require('../../jwt/createToken');
-const User = require('../../models/User')
+
 const bcrypt = require('bcrypt');
-const {StatusCodes} = require('http-status-codes')
-
-
-
+const { User } = require('../../models');
 
 
 const createUser = async (req, res, next) => {

@@ -271,7 +271,6 @@ class FirebaseFunction {
                 .getInstance("https://coffe-app-19ec3-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference("Users")
             ref.addValueEventListener(object : ValueEventListener{
-
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val list = arrayListOf<Users>()
                     for(userSnapshot in snapshot.children ){

@@ -1,52 +1,28 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvHello"
-        android:textSize="30sp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/archivo_black"
-        android:textColor="@color/black"
 
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/svCoffees"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:defaultQueryHint="@string/tim_kiem_ca_phe" />
-        <ImageView
-            android:visibility="gone"
-            android:id="@+id/iv_notification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/notification"/>
-    </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.denzcoskun.imageslider.ImageSlider
         android:id="@+id/recyclerViewBanner"
-        android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewCategory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" />
+        android:layout_height="200dp"
+        app:iss_auto_cycle="true"
+        app:iss_period="1000"
+        app:iss_delay="1000"
+        android:layout_alignParentTop="true"
+
+        app:iss_text_align="CENTER"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewProducts"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="20dp"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_below="@id/recyclerViewBanner"
+        android:layout_alignParentBottom="true"
+        tools:listitem="@layout/item_product"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2" />
+</RelativeLayout>
