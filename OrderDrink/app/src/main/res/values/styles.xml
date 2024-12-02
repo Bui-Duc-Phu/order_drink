@@ -11,7 +11,6 @@
     <style name="MyCustomTabText" parent="TextAppearance.Design.Tab">
         <item name="android:textColor">@color/tablayout_back_select</item>
         <item name="android:textStyle">bold</item>
-
     </style>
 
     <style name="MyTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">

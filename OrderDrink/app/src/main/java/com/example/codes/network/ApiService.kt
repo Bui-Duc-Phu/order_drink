@@ -5,10 +5,12 @@ package com.example.restfull_api_1.Networks
 import android.hardware.lights.LightsRequest
 import com.example.codes.Models.ProductModel
 import com.example.codes.Models.SizeModel
+import com.example.codes.network.dto.request.AddCartRequest
 import com.example.codes.network.dto.request.LoginRequest
 import com.example.codes.network.dto.request.ProductName
 import com.example.codes.network.dto.request.SignupRequest
 import com.example.codes.network.dto.respone.MainRespone
+import com.example.codes.network.dto.respone.result.AddCartResult
 import com.example.codes.network.dto.respone.result.BannerResult
 import com.example.codes.network.dto.respone.result.CategoryResult
 import com.example.codes.network.dto.respone.result.ProductResult
@@ -38,6 +40,9 @@ interface ApiService {
     @POST("cart/getSize")
     fun getSize(@Body productName: ProductName) : Call<MainRespone<List<SizeModel>>>
 
+
+    @POST("cart/addToCart")
+    fun addToCart(@Body productName: AddCartRequest) : Call<MainRespone<AddCartResult>>
 
 
 

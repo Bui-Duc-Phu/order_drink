@@ -1,3 +1,4 @@
+const addProductToCart = require("./cart/addProductToCart");
 const getProductById = require("./cart/getProductById");
 const getSizeByProductName = require("./cart/getSizeByProductName");
 
@@ -11,5 +12,6 @@ GetBanner,
 GetCategory,
 GetProduct,
 getProductById,
-getSizeByProductName
+getSizeByProductName,
+addProductToCart
 }

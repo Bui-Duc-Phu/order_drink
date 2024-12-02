@@ -16,6 +16,7 @@ import com.example.codes.Firebase.FirebaseFunction
 
 import com.example.codes.Models.Users
 import com.example.codes.R
+import com.example.codes.Ultils.MySharedPreferences
 import com.example.codes.databinding.ActivityLoginBinding
 import com.example.codes.network.dto.request.LoginRequest
 import com.example.codes.network.service.authService
@@ -35,6 +36,7 @@ class Login : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     lateinit var firebaseUser: FirebaseUser
     private var progressDialog: ProgressDialog? = null
+    lateinit var  mySharedPreferences : MySharedPreferences
 
 
     private val binding: ActivityLoginBinding by lazy {
@@ -44,7 +46,10 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        auth = FirebaseAuth.getInstance()
+        mySharedPreferences = MySharedPreferences(this)
+
+
+
         init_()
     }
     private fun init_() {
@@ -75,13 +80,30 @@ class Login : AppCompatActivity() {
             }
         }
         authService.loginService(this,
-            LoginRequest(email,password), { onSuccess ->
-                if (onSuccess  != null) {
-                    Toast.makeText(this, "create account successful!", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this,Main::class.java))
-                }
+            LoginRequest(email, password),
+            { onSuccess ->
+                if (onSuccess != null) {
+                    Toast.makeText(this, "Create account successful!", Toast.LENGTH_SHORT).show()
 
-        },{err-> Toast.makeText(this, "err: "+ err, Toast.LENGTH_SHORT).show() })
+                    // Check if the access token is not null
+                    val accessToken = onSuccess.result?.accesstoken
+                    if (!accessToken.isNullOrEmpty()) {
+                        mySharedPreferences.setToken(accessToken)
+                        mySharedPreferences.setUserId(onSuccess.result.id)
+                        mySharedPreferences.setApiKey("sdsdsd2hasdhfysdasdasdgasdujvsbdjsd")
+
+                        startActivity(Intent(this, Main::class.java))
+                    } else {
+                        // Handle the case where the access token is null or empty
+                        Toast.makeText(this, "Failed to get access token", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            },
+            { err ->
+                Toast.makeText(this, "Error: $err", Toast.LENGTH_SHORT).show()
+                println("Error: $err")
+            })
+
     }
 
 

@@ -22,10 +22,12 @@ import androidx.core.app.NotificationCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.codes.Adapters.SizeAdapter
+import com.example.codes.Administrator.MyApp
 import com.example.codes.Firebase.DataHandler.addToCart
 import com.example.codes.Models.ProductModel
 import com.example.codes.Models.SizeModel
 import com.example.codes.R
+import com.example.codes.network.dto.request.AddCartRequest
 import com.example.codes.network.dto.request.ProductName
 import com.example.codes.network.service.cartService
 
@@ -94,6 +96,24 @@ class SizeDialogFragment : BottomSheetDialogFragment() {
             val selectedSize = sizeAdapter!!.selectedSize
             if (selectedSize != null) {
                 val quantity = textQuantity.getText().toString().toInt()
+
+
+                val productCart = product.id?.let {
+                    MyApp.UID?.let { it1 ->
+                    AddCartRequest(it,
+                        it1, quantity.toString(), selectedSize.price.toString(),selectedSize.size)
+                } }
+                if (productCart != null) {
+                    cartService.addCart(requireContext(),productCart,{ addCartResult ->
+                        println("add cart sucessfull "+ addCartResult)
+
+
+                    },{err->
+                        println("add cart false ")
+
+                    })
+                }
+
                 addToCart(product, selectedSize, quantity)
                 dismiss()
             } else {

@@ -7,6 +7,7 @@ const GetProduct = async (req, res, next) => {
         if (listData.length === 0) {  throw new Error('Product not found');}
 
         const responseData = listData.map(item => new GetProductRespone(
+            item.id,
             item.name,
             item.price,
             item.discount,

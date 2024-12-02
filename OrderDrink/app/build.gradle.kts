@@ -44,6 +44,9 @@ android {
     }
     buildFeatures {
         viewBinding = true
+
+        buildConfig = true
+
     }
 }
 
@@ -71,6 +74,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:23.0.0")
     implementation("com.google.firebase:firebase-storage:21.0.1")
     implementation("com.google.firebase:firebase-messaging:24.0.2")
+    implementation("com.google.android.datatransport:transport-api:3.0.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -119,6 +123,11 @@ dependencies {
     implementation ("org.osmdroid:osmdroid-android:6.1.10")
 
     implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
+
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+    implementation ("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
+
 
 
 

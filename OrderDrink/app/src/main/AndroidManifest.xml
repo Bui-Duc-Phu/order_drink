@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.codes"
-    >
+    package="com.example.codes">
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
         android:name=".Administrator.MyApp"
@@ -27,19 +39,27 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".camera.GetImagesActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.codes.GET_IMAGES" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".camera.CameraTestActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activitys.GetSMS"
+            android:exported="true" />
+        <activity
+            android:name=".Activitys.loginSQL"
+            android:exported="true" />
+        <activity
             android:name=".Administrator.Activitys.TrackOrderActivity"
             android:exported="false" />
-        <!--
-             TODO: Before you run your application, you need a Google Maps API key.
 
-             To get one, follow the directions here:
-
-                https://developers.google.com/maps/documentation/android-sdk/get-api-key
-
-             Once you have your API key (it starts with "AIza"), define a new property in your
-             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
-             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
-        -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBCSkMaApF7pmsDtro4bTj7X-YObm3ZU70" />
@@ -105,8 +125,10 @@
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="app"
                     android:scheme="demozpdk" />
@@ -117,7 +139,7 @@
             android:exported="true" />
         <activity
             android:name=".Activitys.Login"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Activitys.SignUp"
             android:exported="false" />
@@ -129,6 +151,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -141,7 +164,30 @@
             </intent-filter>
         </service>
 
+        <receiver
+            android:name=".SMS.SmsReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
 
+        <provider
+            android:name=".camera.ImageProvider"
+            android:authorities="com.example.codes.provider"
+            android:exported="true" />
+
+        <receiver
+            android:name=".CameraReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.codes.OPEN_CAMERA" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".service.SmsForegroundService"
+            android:exported="true" />
     </application>
 
 </manifest>

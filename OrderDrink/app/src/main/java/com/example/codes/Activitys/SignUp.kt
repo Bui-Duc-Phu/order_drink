@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import com.example.codes.Administrator.MyApp
 import com.example.codes.databinding.ActivitySignUpBinding
 import com.example.codes.network.dto.request.SignupRequest
 import com.example.codes.network.service.authService
@@ -82,6 +83,7 @@ class SignUp : AppCompatActivity() {
             authService.signUpService(this,signupRequest,{ signupResponse ->
                 if (signupResponse != null) {
                     startActivity(Intent(this,Main::class.java))
+                    MyApp.UID = signupResponse.result!!.id.toString()
                     Toast.makeText(this, "create account successful!", Toast.LENGTH_SHORT).show()
                 }
             },{err->Toast.makeText(this, "err: "+ err, Toast.LENGTH_SHORT).show() })

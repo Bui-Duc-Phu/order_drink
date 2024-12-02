@@ -29,7 +29,6 @@ object homeService {
                 call: Call<MainRespone<List<BannerResult>>>,
                 response: Response<MainRespone<List<BannerResult>>>
             ) {
-
                 if (response.isSuccessful) {
                     val res = response.body()
                     println("Response getbaner: ${res!!.result}")
@@ -41,16 +40,15 @@ object homeService {
                     }
                     val message = jsonObject!!.getString("message")
                     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                    println("get List banner err" + message)
                     err(message)
                 }
-
             }
             override fun onFailure(call: Call<MainRespone<List<BannerResult>>>, t: Throwable) {
                 Toast.makeText(context, "Lỗi kết nối: ${t.message}", Toast.LENGTH_SHORT).show()
-                println(t.message)
+                println("err get banner " + t.message)
                 onSuccess(null)
             }
-
         })
     }
 

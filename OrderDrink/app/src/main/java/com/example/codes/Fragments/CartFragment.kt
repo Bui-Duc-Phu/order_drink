@@ -50,7 +50,6 @@ class CartFragment : Fragment() {
                 ): Boolean {
                     return false
                 }
-
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
                     val position = viewHolder.getAdapterPosition()
                     myCartAdapter.deleteCartItem(DataHandler.orderModelArrayList, position)

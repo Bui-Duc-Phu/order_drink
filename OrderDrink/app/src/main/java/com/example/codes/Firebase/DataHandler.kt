@@ -287,7 +287,6 @@ object DataHandler {
         val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault())
         val start = sdf.parse("$startDate 00:00:00")
         val end = sdf.parse("$endDate 23:59:59")
-
         for (order in orderList) {
             val orderDate = sdf.parse(order.time)
             if (orderDate.after(start) && orderDate.before(end)) {

@@ -1,8 +1,8 @@
 class LoginResponse {
-    constructor(email, id, accessToken) {
+    constructor(email, id, accesstoken) {
       this.email = email;
       this.id = id;
-      this.accessToken = accessToken;
+      this.accesstoken = accesstoken;
     }
   }
   
