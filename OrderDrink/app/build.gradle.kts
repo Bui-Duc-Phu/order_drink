@@ -28,6 +28,20 @@ android {
                 "proguard-rules.pro"
             )
         }
+//        getByName("release") {
+//            isMinifyEnabled = true
+//            isShrinkResources = true
+//            proguardFiles(
+//                getDefaultProguardFile("proguard-android-optimize.txt"),
+//                "proguard-rules.pro"
+//            )
+//        }
+
+
+
+
+
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -118,7 +132,6 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
 
-
     implementation("androidx.core:core-animation:1.0.0")
     implementation ("org.osmdroid:osmdroid-android:6.1.10")
 
@@ -128,16 +141,7 @@ dependencies {
 
     implementation ("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
-
-
-
-
-
-
-
-
-
-
+    implementation ("androidx.security:security-crypto:1.1.0-alpha06")
 
 
 }

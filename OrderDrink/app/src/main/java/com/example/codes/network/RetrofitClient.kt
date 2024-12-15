@@ -29,7 +29,6 @@ object RetrofitClient {
             .connectionPool(ConnectionPool(0, 5, TimeUnit.NANOSECONDS))
             .build()
 
-
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttpClient)

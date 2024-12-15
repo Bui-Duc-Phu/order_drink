@@ -8,6 +8,10 @@
     <string name="close">Close</string>
 
     <!-- login_or_signup -->
+    <string name="API">http://192.168.0.109:3000/</string>
+    <string name="BASE_URL">http://192.168.0.109:3000/</string>
+    <string name="Login">http://192.168.0.109:3000/auth/login</string>
+    <string name="Sign_up">http://192.168.0.109:3000/auth/create-user</string>
     <string name="dang_ky">Đăng ký</string>
     <string name="dang_nhap">Đăng nhập</string>
     <string name="google_btn">Đăng nhập bằng google</string>

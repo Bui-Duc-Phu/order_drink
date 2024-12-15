@@ -69,19 +69,6 @@ class Main : AppCompatActivity(){
 
         init_()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
@@ -90,11 +77,9 @@ class Main : AppCompatActivity(){
         setSupportActionBar(binding.toolbar)
         setupViewPagerAndBottomNav()
         setUpBadge()
-
         binding.chatBtn.setOnClickListener {
             startActivity(Intent(this@Main,ChatMain::class.java))
         }
-
     }
 
     private fun setUpBadge() {

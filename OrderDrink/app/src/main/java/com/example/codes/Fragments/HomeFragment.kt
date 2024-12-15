@@ -61,13 +61,24 @@ class HomeFragment : Fragment() {
 
     private fun bannnerHandler() {
         val imageList = ArrayList<SlideModel>() // Create image list
-        homeService.getBanner(requireContext(),{listBaner->
-            listBaner!!.forEach { item->
+        homeService.getBanner(requireContext(), { listBaner ->
+            // Kiểm tra xem listBaner có null không
+            listBaner?.forEach { item ->
                 imageList.add(SlideModel(item.url))
             }
-            binding.recyclerViewBanner.setImageList(imageList)
-        },{})
+            // Nếu listBaner null, không làm gì hoặc hiển thị thông báo lỗi
+            if (listBaner.isNullOrEmpty()) {
+                Toast.makeText(requireContext(), "No banners available", Toast.LENGTH_SHORT).show()
+            } else {
+                binding.recyclerViewBanner.setImageList(imageList)
+            }
+        }, {
+            // Nếu có lỗi từ API hoặc gọi hàm, xử lý tại đây
+            Toast.makeText(requireContext(), "Error fetching banners", Toast.LENGTH_SHORT).show()
+            Log.e("HomeFragment", "Error in bannerHandler: ${it}")
+        })
     }
+
 
     private  fun productListHandler() {
         homeService.GetProduct(requireContext(),{listProduct->

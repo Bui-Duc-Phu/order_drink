@@ -1,0 +1,94 @@
+<!-- res/layout/fragment_cart.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/txtCartTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="@font/archivo_black"
+        android:layout_gravity="center_vertical"
+        android:text="@string/gioHang"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:layout_margin="10dp"
+        android:layout_alignParentTop="true"
+        />
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/txtCartTitle"
+        android:layout_above="@id/llBuy">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewCart"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+    android:id="@+id/llBuy"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:orientation="vertical">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:text="@string/tongThanhToan"
+                android:textColor="@color/black"
+                android:fontFamily="@font/archivo_black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="@string/giatien"
+                android:fontFamily="@font/archivo_black"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnCreateOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="#846046"
+            android:layout_margin="10dp"
+            android:text="@string/datHangNgay" />
+    </LinearLayout>
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/txtEmptyCart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/empty_cart"
+        android:gravity="center"
+        android:fontFamily="@font/archivo_black"
+        android:textSize="18sp" />
+
+</RelativeLayout>

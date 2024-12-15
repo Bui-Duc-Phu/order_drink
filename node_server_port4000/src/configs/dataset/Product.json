@@ -1,0 +1,91 @@
+[
+  {
+    "id": 1,
+    "name": "Cappuccino Freeze",
+    "category": "Freeze",
+    "discount": 10,
+    "finalPrice": 243000,
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffe-app-19ec3.appspot.com/o/products%2Fcappuchino.jpg?alt=media&token=61a4ad5a-87d5-4715-8c19-8af8d7c512bb",
+    "price": 270000
+  },
+  {
+    "id": 2,
+    "name": "Choco Milktea",
+    "category": "Milktea",
+    "discount": 10,
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffe-app-19ec3.appspot.com/o/products%2Fchoco.jpg?alt=media&token=9ccc4c3f-2205-45da-abb1-ffa1fe683b37",
+    "price": 23000
+  },
+  {
+    "id": 3,
+    "name": "Espresso",
+    "category": "Coffe",
+    "discount": 30,
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffe-app-19ec3.appspot.com/o/products%2Fespresso.jpg?alt=media&token=8197474a-6ba6-48d9-b8dc-f7f84b972908",
+    "price": 30000
+  },
+  {
+    "id": 4,
+    "name": "Espresso Freeze",
+    "category": "Freeze",
+    "discount": 0,
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffe-app-19ec3.appspot.com/o/products%2Fespresso.jpg?alt=media&token=8197474a-6ba6-48d9-b8dc-f7f84b972908",
+    "price": 20000
+  },
+  {
+    "id": 5,
+    "name": "Jasmine Milktea",
+    "category": "Milktea",
+    "discount": 10,
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffe-app-19ec3.appspot.com/o/products%2Fjasmine.jpg?alt=media&token=c9933610-4237-4dba-8427-f7ab98daf659",
+    "price": 23000
+  },
+  {
+    "id": 6,
+    "name": "Lemon Juice",
+    "category": "Juice",
+    "discount": 0,
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffe-app-19ec3.appspot.com/o/products%2Fnuoc_ep_chanh.png?alt=media&token=ae2ebc66-d9fc-4094-a278-9569f398ba95",
+    "price": 30000
+  },
+  {
+    "id": 7,
+    "name": "Macchiato",
+    "category": "Coffe",
+    "discount": 0,
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffe-app-19ec3.appspot.com/o/products%2Fmacchiato.png?alt=media&token=1b6a2b8b-2270-4036-a563-febc1e729476",
+    "price": 25000
+  },
+  {
+    "id": 8,
+    "name": "Macchiato Freeze",
+    "category": "Freeze",
+    "discount": 0,
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffe-app-19ec3.appspot.com/o/products%2Fmacchiato.png?alt=media&token=1b6a2b8b-2270-4036-a563-febc1e729476",
+    "price": 20000
+  },
+  {
+    "id": 9,
+    "name": "Mocha",
+    "category": "Coffe",
+    "discount": 0,
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffe-app-19ec3.appspot.com/o/products%2Fmocha.jpg?alt=media&token=9fd86e8f-d8c0-4bdc-b874-6948e83836b4",
+    "price": 45000
+  },
+  {
+    "id": 10,
+    "name": "Okinawa Milktea",
+    "category": "Milktea",
+    "discount": 0,
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffe-app-19ec3.appspot.com/o/products%2Fokinawa.jpg?alt=media&token=7e4732c9-1888-458e-adaa-acd50c022992",
+    "price": 25000
+  },
+  {
+    "id": 11,
+    "name": "Orange Juice",
+    "category": "Juice",
+    "discount": 0,
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/coffe-app-19ec3.appspot.com/o/products%2Fnuoc_ep_cam.png?alt=media&token=67e66db5-624e-40b1-8fbc-c2b16efae5e1",
+    "price": 20000
+  }
+]

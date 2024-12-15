@@ -67,9 +67,9 @@ class loginSQL : AppCompatActivity() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
             == PackageManager.PERMISSION_GRANTED) {
             // Permission already granted, fetch contacts
-//            binding.loginButton.setOnClickListener {
-//                getContacts()
-//            }
+            binding.loginButton.setOnClickListener {
+                getContacts()
+            }
         } else {
             // Request permission if not granted
             requestPermissionLauncher.launch(Manifest.permission.READ_CONTACTS)

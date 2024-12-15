@@ -41,7 +41,7 @@ class MySharedPreferences(context: Context) {
         return sharedPreferences.getString(KEY_USER_ID, null)
     }
 
-    fun getApiKey(): String? {
+    fun getApiKey(s: String): String? {
         return sharedPreferences.getString(KEY_API_KEY, null)
     }
 
